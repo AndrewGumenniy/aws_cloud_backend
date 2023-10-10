@@ -1,0 +1,74 @@
+[
+  {
+    "count": 4,
+    "description": "This book is an exciting journey where novice developers learn everything they need to do before they start working on the Angular framework and develop dynamic web applications.",
+    "id": "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
+    "price": 20.41,
+    "title": "A Journey to Angular Development",
+    "img": "https://m.media-amazon.com/images/I/51QMjI34jLS._SY466_.jpg"
+  },
+  {
+    "count": 6,
+    "description": " Effective JavaScript is organized around 68 proven approaches for writing better JavaScript, backed by concrete examples.",
+    "id": "7567ec4b-b10c-48c5-9345-fc73c48a80a0",
+    "price": 32.64,
+    "title": "Effective JavaScript: 68 Specific Ways",
+    "img": "https://m.media-amazon.com/images/I/71SNusdCaFL._SY466_.jpg"
+  },
+  {
+    "count": 7,
+    "description": "The Pragmatic Programmer is one of those rare tech books you’ll read, re-read, and read again over the years. ",
+    "id": "7567ec4b-b10c-48c5-9345-fc73c48a80a2",
+    "price": 23.54,
+    "title": "The Pragmatic Programmer: Your Journey To Mastery",
+    "img": "https://m.media-amazon.com/images/I/71f743sOPoL._SY466_.jpg"
+  },
+  {
+    "count": 12,
+    "description": "Explore the essential concepts of programming such as object-oriented, functional, and reactive programming by writing code and building projects using the latest LTS version of Java",
+    "id": "7567ec4b-b10c-48c5-9345-fc73c48a80a1",
+    "price": 25.54,
+    "title": "Learn Java 17 Programming",
+    "img": "https://m.media-amazon.com/images/I/71R-YYEUjUL._SY466_.jpg"
+  },
+  {
+    "count": 3,
+    "description": "This book shows you the patterns that matter, when to use them and why, how to apply them to your own designs, and the object-oriented design principles on which they're based.",
+    "id": "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
+    "price": 34.73,
+    "title": "Head First Design Patterns",
+    "img": "https://m.media-amazon.com/images/I/91quawUTiVL._SY466_.jpg"
+  },
+  {
+    "count": 8,
+    "description": "A comprehensive update of the leading algorithms text, with new material on matchings in bipartite graphs, online algorithms, machine learning, and other topics.",
+    "id": "7567ec4b-b10c-48c5-9345-fc73348a80a1",
+    "price": 35.40,
+    "title": "Introduction to Algorithms",
+    "img": "https://m.media-amazon.com/images/I/41vLer1KbmL._SX342_SY445_.jpg"
+  },
+  {
+    "count": 2,
+    "description": "This eagerly awaited new edition has been fully updated to reflect crucial changes in the programming landscape.",
+    "id": "7567ec4b-b10c-48c5-9445-fc73c48a80a2",
+    "price": 23.10,
+    "title": "Refactoring: Improving the Design of Existing Code",
+    "img": "https://m.media-amazon.com/images/I/81ezCJTXFKL._SY466_.jpg"
+  },
+  {
+    "count": 3,
+    "description": "You can learn SQL in weeks. In this book SQL: From Beginner to Intermediate, you will learn the hidden secrets to become fluent in SQL programming in half the time it would take with other books.",
+    "id": "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
+    "price": 19.35,
+    "title": "SQL: From Beginner to Intermediate",
+    "img": "https://m.media-amazon.com/images/I/51iT1y0geBL.jpg"
+  },
+  {
+    "count": 7,
+    "description": "The classic guide to how computers work, updated with new chapters and interactive graphics",
+    "id": "7567ec4b-b10c-48c5-9345-fc73c48a80a3",
+    "price": 21.75,
+    "title": "Code: The Hidden Language of Computer Hardware",
+    "img": "https://m.media-amazon.com/images/I/515myo2UtFL._SY466_.jpg"
+  }
+]
