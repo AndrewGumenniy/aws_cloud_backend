@@ -6,16 +6,16 @@ For detailed instructions, please refer to the [documentation](https://www.serve
 
 ## Installation/deployment instructions
 
-npm run deploy - delpoy project to AWS
-npm run local - deploy for local development
-npm run test - run test suite
-npm run swagger - build local swagger documentation
+npm run deploy - delpoy project to AWS  
+npm run local - deploy for local development  
+npm run test - run test suite  
+npm run swagger - build local swagger documentation  
 
 ## AWS endpoints
 
-GetProducts - https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products
-GetProductsById - https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products/{id}
-Swagger - https://fon5cay0fg.execute-api.eu-west-1.amazonaws.com/swagger
+GetProducts - https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products  
+GetProductsById - https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products/{id}  
+Swagger - https://fon5cay0fg.execute-api.eu-west-1.amazonaws.com/swagger  
 
 ### Project structure
 
