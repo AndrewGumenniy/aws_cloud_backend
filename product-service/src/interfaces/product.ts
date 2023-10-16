@@ -1,5 +1,4 @@
 export interface Product {
-    count: number;
     description: string;
     id: string;
     price: number;
@@ -7,4 +6,18 @@ export interface Product {
     img: string;
 }
 
-export type ProductList = Product[];
+export interface Stock {
+    count: number;
+    product_id: string;
+}
+
+export interface JoinedProductData {
+    description: string;
+    id: string;
+    price: number;
+    title: string;
+    img: string;
+    count: number;
+}
+
+export type ProductList = JoinedProductData[];

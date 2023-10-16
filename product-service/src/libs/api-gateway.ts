@@ -3,7 +3,7 @@ import { HttpResponseError } from "@interfaces/http-response-error"
 import { Product, ProductList } from "@interfaces/product"
 
 export const formatJSONResponse = (
-  body: ProductList | Product | HttpResponseError | string,
+  body: ProductList | Product | HttpResponseError | string | any,
   statusCode: number
 ) => {
   return {
