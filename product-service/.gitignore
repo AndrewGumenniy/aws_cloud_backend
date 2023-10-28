@@ -13,3 +13,6 @@ swagger
 
 # jest coverage
 coverage
+
+#db-credential
+src/constants/db-connection.ts

@@ -2,6 +2,8 @@ import type { AWS } from '@serverless/typescript';
 
 import getProductsList from '@functions/get-product-list';
 import getProductsById from '@functions/get-product-by-id';
+import createProduct from '@functions/create-product';
+import { DB_REGION, PRODUCTS_TABLE_NAME, STOCKS_TABLE_NAME } from '@constatns/db-connection';
 
 const serverlessConfiguration: AWS = {
   service: 'product-service',
@@ -23,9 +25,29 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      DB_REGION: DB_REGION,
+      PRODUCTS_TABLE_NAME: PRODUCTS_TABLE_NAME,
+      STOCKS_TABLE_NAME: STOCKS_TABLE_NAME
     },
+    iamRoleStatements: [
+      {
+        Effect: 'Allow',
+        Action: [
+          'dynamodb:DescribeTable',
+          'dynamodb:Query',
+          'dynamodb:Scan',
+          'dynamodb:GetItem',
+          'dynamodb:PutItem',
+          'dynamodb:UpdateItem',
+          'dynamodb:DeleteItem'
+        ],
+        Resource: [
+          'arn:aws:dynamodb:${self:provider.region}:*:table/*'
+        ]
+      }
+    ]
   },
-  functions: { getProductsList, getProductsById },
+  functions: { getProductsList, getProductsById, createProduct },
   package: { individually: true },
   custom: {
     esbuild: {

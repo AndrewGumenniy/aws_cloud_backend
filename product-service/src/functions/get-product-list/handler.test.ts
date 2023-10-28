@@ -1,7 +1,7 @@
 
 import { getProductsList } from './handler';
-import * as productsActions from '@utils/products';
-import { getProducts } from "@utils/products";
+import * as productsActions from '@utils/product-data-validation';
+import { getProducts } from "@utils/product-data-validation";
 
 describe('getProductsById', () => {
     beforeEach(() => {

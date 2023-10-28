@@ -13,8 +13,9 @@ npm run swagger - build local swagger documentation
 
 ## AWS endpoints
 
-GetProducts - https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products  
-GetProductsById - https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products/{id}  
+CreateProduct - POST https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products  
+GetProducts - GET https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products  
+GetProductsById - GET https://jjiuus8kjd.execute-api.eu-west-1.amazonaws.com/dev/products/{id}  
 Swagger - https://fon5cay0fg.execute-api.eu-west-1.amazonaws.com/swagger  
 
 ### Project structure

@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent } from "aws-lambda";
 
 import { PRODUCTS_NOT_FOUND_ERROR_MESSAGE } from '@constatns/http-response';
 import { getProductsById } from './handler';
-import * as productsActions from '@utils/products';
+import * as productsActions from '@utils/product-data-validation';
 
 describe('getProductsById', () => {
     beforeEach(() => {
