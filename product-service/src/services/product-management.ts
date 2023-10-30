@@ -2,10 +2,14 @@ import { DynamoDBClient, QueryCommand, ScanCommand, TransactWriteItemsCommand } 
 import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { uuid } from "uuidv4";
+import * as dotenv from 'dotenv';
+import * as process from 'process';
 
-import { DB_REGION, PRODUCTS_TABLE_NAME, STOCKS_TABLE_NAME } from "@constatns/db-connection";
 import { JoinedProductData } from "@interfaces/product";
 
+dotenv.config();
+
+const { DB_REGION, PRODUCTS_TABLE_NAME, STOCKS_TABLE_NAME } = process.env;
 const client = new DynamoDBClient({ region: DB_REGION });
 const ddbDocClient = DynamoDBDocumentClient.from(client);
 

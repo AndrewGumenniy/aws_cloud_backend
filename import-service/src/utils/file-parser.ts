@@ -1,13 +1,19 @@
+import { Readable } from "stream";
+import * as dotenv from 'dotenv';
+import * as process from 'process';
+
 import { CopyObjectCommand, DeleteObjectCommand, GetObjectCommand, GetObjectCommandInput, GetObjectCommandOutput, S3Client } from "@aws-sdk/client-s3";
 import { PARSED_FOLDER_NAME, UPLOADED_FOLDER_NAME } from "src/constants/http-request";
-import { Readable } from "stream";
 
+dotenv.config();
+
+const { BUCKET } = process.env;
 const csv = require('csv-parser');
 const s3Client = new S3Client({region: process.env.REGION});
 
 export const fileParser = async(objectKey) => {
   const bucketParams = {
-    Bucket: process.env.BUCKET,
+    Bucket: BUCKET,
     Key: objectKey
   };
 
@@ -52,8 +58,8 @@ const parseCsvFile = async(bucketParams: GetObjectCommandInput, objectKey, s3Obj
 
 const copyParsedFile = async(objectKey) => {
   const copyObjectCommand = new CopyObjectCommand({
-    Bucket: process.env.BUCKET,
-    CopySource: `${process.env.BUCKET}/${objectKey}`,
+    Bucket: BUCKET,
+    CopySource: `${BUCKET}/${objectKey}`,
     Key: objectKey.replace(UPLOADED_FOLDER_NAME, PARSED_FOLDER_NAME)
   });
 

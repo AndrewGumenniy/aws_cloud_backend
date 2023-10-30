@@ -1,10 +1,13 @@
 import type { AWS } from '@serverless/typescript';
 import * as dotenv from 'dotenv';
+import * as process from 'process';
 
 import importProductsFile from '@functions/import-products-file';
 import importFileParser from '@functions/import-file-parser';
 
 dotenv.config();
+
+const { BUCKET, REGION } = process.env;
 
 const serverlessConfiguration: AWS = {
   service: 'import-service',
@@ -24,19 +27,19 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-      REGION: process.env.REGION,
-      BUCKET: process.env.BUCKET
+      REGION: REGION,
+      BUCKET: BUCKET
     },
      iamRoleStatements: [
       {
         Effect: 'Allow',
         Action: ['s3:ListBucket'],
-        Resource: [`arn:aws:s3:::${process.env.BUCKET}`]
+        Resource: [`arn:aws:s3:::${BUCKET}`]
       },
       {
         Effect: 'Allow',
         Action: ['s3:*'],
-        Resource: [`arn:aws:s3:::${process.env.BUCKET}/*`]
+        Resource: [`arn:aws:s3:::${BUCKET}/*`]
       }
     ]
   },

@@ -14,5 +14,5 @@ swagger
 # jest coverage
 coverage
 
-#db-credential
-src/constants/db-connection.ts
+# enviroments variables
+.env

@@ -1,9 +1,14 @@
 import type { AWS } from '@serverless/typescript';
+import * as dotenv from 'dotenv';
+import * as process from 'process';
 
 import getProductsList from '@functions/get-product-list';
 import getProductsById from '@functions/get-product-by-id';
 import createProduct from '@functions/create-product';
-import { DB_REGION, PRODUCTS_TABLE_NAME, STOCKS_TABLE_NAME } from '@constatns/db-connection';
+
+dotenv.config();
+
+const { PRODUCTS_TABLE_NAME, STOCKS_TABLE_NAME, DEFAULT_REGION } = process.env;
 
 const serverlessConfiguration: AWS = {
   service: 'product-service',
@@ -25,7 +30,7 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-      DB_REGION: DB_REGION,
+      DB_REGION: DEFAULT_REGION,
       PRODUCTS_TABLE_NAME: PRODUCTS_TABLE_NAME,
       STOCKS_TABLE_NAME: STOCKS_TABLE_NAME
     },
@@ -63,7 +68,7 @@ const serverlessConfiguration: AWS = {
     autoswagger: {
       typefiles: ['./src/interfaces/product.ts'],
       basePath: '/dev',
-      host: 'jjiuus8kjd.execute-api.eu-west-1.amazonaws.com'
+      host: '27cq5albyi.execute-api.eu-west-1.amazonaws.com'
     }
   },
 };
