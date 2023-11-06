@@ -7,5 +7,6 @@ export enum StatuseCodeList {
 
 export const PRODUCTS_NOT_FOUND_ERROR_MESSAGE = ({ id }): string => `Product with id ${id} not found`;
 export const PRODUCT_ALREADY_EXISTS = ({ id }): string => `Product with id ${id} already exists!`;
+export const PRODUCT_HAS_INVALID_FIELDS = ({ title }): string => `Product with title ${title} has invalid fields`;
 export const PRODUCT_DATA_IS_INVALID = "Product data is invalid";
 export const EMPTY_BODY = "Empty body";

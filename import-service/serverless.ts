@@ -28,7 +28,8 @@ const serverlessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
       REGION: REGION,
-      BUCKET: BUCKET
+      BUCKET: BUCKET,
+      QUEUE_URL: 'https://sqs.${self:provider.region}.amazonaws.com/${aws:accountId}/catalogItemsQueue'
     },
      iamRoleStatements: [
       {
@@ -40,6 +41,11 @@ const serverlessConfiguration: AWS = {
         Effect: 'Allow',
         Action: ['s3:*'],
         Resource: [`arn:aws:s3:::${BUCKET}/*`]
+      },
+      {
+        Effect: 'Allow',
+        Action: 'sqs:SendMessage',
+        Resource: ['arn:aws:sqs:${self:provider.region}:${aws:accountId}:catalogItemsQueue']
       }
     ]
   },

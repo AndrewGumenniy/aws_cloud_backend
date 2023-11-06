@@ -1,15 +1,18 @@
 import { Readable } from "stream";
+import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 import * as dotenv from 'dotenv';
 import * as process from 'process';
+import stripBom from 'strip-bom-stream';
 
 import { CopyObjectCommand, DeleteObjectCommand, GetObjectCommand, GetObjectCommandInput, GetObjectCommandOutput, S3Client } from "@aws-sdk/client-s3";
 import { PARSED_FOLDER_NAME, UPLOADED_FOLDER_NAME } from "src/constants/http-request";
 
 dotenv.config();
 
-const { BUCKET } = process.env;
+const { BUCKET, REGION } = process.env;
 const csv = require('csv-parser');
-const s3Client = new S3Client({region: process.env.REGION});
+const s3Client = new S3Client({region: REGION});
+const sqsClient = new SQSClient({ region: REGION });
 
 export const fileParser = async(objectKey) => {
   const bucketParams = {
@@ -28,10 +31,17 @@ export const fileParser = async(objectKey) => {
 const parseCsvFile = async(bucketParams: GetObjectCommandInput, objectKey, s3Object: GetObjectCommandOutput) => {
   await new Promise((res, rej) => {
     const file = (s3Object.Body as Readable);
+    const mapValues = ({ header, index, value }) => header === 'price' || header === 'count' ? Number(value): value;
 
     file
-      .pipe(csv())
-      .on("data", (data) => console.log("Record:", data))
+      .pipe(stripBom())
+      .pipe(csv({ mapValues }))
+      .on("data", (data) => sqsClient.send(
+        new SendMessageCommand({
+          QueueUrl: process.env.QUEUE_URL,
+          MessageBody: JSON.stringify(data),
+        })
+      ))
       .on("end", async () => {
         console.log("Finish parsing CSV file");
 
