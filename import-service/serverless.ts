@@ -49,6 +49,23 @@ const serverlessConfiguration: AWS = {
       }
     ]
   },
+  resources: {
+    Resources: {
+      GatewayErrorResponse: {
+        Type: 'AWS::ApiGateway::GatewayResponse',
+        Properties: {
+          ResponseParameters: {
+            'gatewayresponse.header.Access-Control-Allow-Origin': "'*'",
+            'gatewayresponse.header.Access-Control-Request-Headers': "'Authorization'",
+          },
+          ResponseType: 'DEFAULT_4XX',
+          RestApiId: {
+            Ref: 'ApiGatewayRestApi',
+          }
+        }
+      }
+    }
+  },
   functions: { importProductsFile, importFileParser },
   package: { individually: true },
   custom: {
@@ -62,7 +79,14 @@ const serverlessConfiguration: AWS = {
       platform: 'node',
       concurrency: 10
     },
-  },
+    authorizers: {
+      basicAuthorizer: {
+        name: 'basicAuthorizer',
+        arn: 'arn:aws:lambda:${aws:region}:${aws:accountId}:function:authorization-service-dev-basicAuthorizer',
+        type: 'token'
+      }
+    }
+  }
 };
 
 module.exports = serverlessConfiguration;
