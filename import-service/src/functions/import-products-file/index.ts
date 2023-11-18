@@ -9,6 +9,12 @@ export default {
         method: GET_METHOD,
         path: IMPORT,
         cors: true,
+        authorizer: {
+          name: '${self:custom.authorizers.basicAuthorizer.name}',
+          arn: '${self:custom.authorizers.basicAuthorizer.arn}',
+          type: '${self:custom.authorizers.basicAuthorizer.type}',
+          resultTtlInSeconds: 0
+        },
         request: {
           parameters: {
             querystrings: {
